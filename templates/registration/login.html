@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block extra_css %}
+    <style>
+      li{
+        color: rgb(184, 81, 81);
+        list-style-type: none;
+      }
+    </style>
+  {% endblock extra_css %}
+
+{% block content %}
+
+<div class="mt-3">
+    {% if form.errors and form.non_field_errors %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Login Failed!</strong> Please enter correct username and password.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  
+{% endif %}
+</div>
+<form action="" method="post" class="m-2">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="" class="form-label">Username</label>
+        <input
+            type="text"
+            class="form-control"
+            name="username"
+            id=""
+            placeholder="Enter username"
+        />
+        {{ form.username.errors}}
+
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Password</label>
+        <input
+            type="password"
+            class="form-control"
+            name="password"
+            id=""
+            placeholder="Enter password"
+        />
+        {{ form.password.errors }}
+    </div>
+    <button
+        type="submit"
+        class="btn btn-success"
+    >
+        Login
+    </button>
+</form>
+{% endblock content %}
+
+
